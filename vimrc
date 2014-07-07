@@ -113,4 +113,5 @@ set guicursor+=i:blinkwait0
 set timeoutlen=1000 ttimeoutlen=0
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+map ,n :NERDTreeToggle<CR>
 
