@@ -95,6 +95,8 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
+" Ignoring  certain types of files and build/target directories
+let NERDTreeIgnore=['target$[[dir]]']
 "
 " ================ Scrolling ========================
 
@@ -115,3 +117,18 @@ set timeoutlen=1000 ttimeoutlen=0
 so ~/.yadr/vim/settings.vim
 map ,n :NERDTreeToggle<CR>
 
+"I'm explicitely ignoring any folder called target (mainly rust project) by
+"overriding the ctrlp.vim with .yadr/settings... on the call to 'ag'
+"
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+
+nnoremap <silent> <ESC>OA <Nop>
+nnoremap <silent> <ESC>OB <Nop>
+nnoremap <silent> <ESC>OD <Nop>
+nnoremap <silent> <ESC>OC <Nop>
+
+nnoremap ; :
