@@ -115,20 +115,33 @@ set guicursor+=i:blinkwait0
 set timeoutlen=1000 ttimeoutlen=0
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
-map ,n :NERDTreeToggle<CR>
 
 "I'm explicitely ignoring any folder called target (mainly rust project) by
 "overriding the ctrlp.vim with .yadr/settings... on the call to 'ag'
 "
 
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-
+" inoremap  <Up>     <NOP>
+" inoremap  <Down>   <NOP>
+" inoremap  <Left>   <NOP>
+" inoremap  <Right>  <NOP>
+" 
 nnoremap <silent> <ESC>OA <Nop>
 nnoremap <silent> <ESC>OB <Nop>
 nnoremap <silent> <ESC>OD <Nop>
 nnoremap <silent> <ESC>OC <Nop>
-
+" 
+noremap h <NOP>
+noremap j <NOP>
+noremap k <NOP>
+noremap l <NOP>
+" 
 nnoremap ; :
+let g:mustache_abbreviations = 1
+map ,n :NERDTreeToggle<CR>
+"that will make is so html files are only checked if you explicitly run
+":SyntasticCheck
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+
+" Allow Ctrp to search only on the currect directory
+"
+nnoremap <silent> ,e :CtrlPCurWD<cr>
