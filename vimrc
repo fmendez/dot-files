@@ -145,3 +145,5 @@ let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 " Allow Ctrp to search only on the currect directory
 "
 nnoremap <silent> ,e :CtrlPCurWD<cr>
+ set lazyredraw
+ set ttyfast
