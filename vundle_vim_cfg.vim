@@ -29,7 +29,9 @@ Plugin 'https://github.com/Lokaltog/vim-easymotion'
 Plugin 'https://github.com/xsunsmile/showmarks'
 Plugin 'https://github.com/rust-lang/rust.vim'
 Plugin 'tpope/vim-unimpaired'
-
+Plugin 'https://github.com/briandoll/change-inside-surroundings.vim'
+Plugin 'https://github.com/tomtom/tcomment_vim'
+Plugin 'goldfeld/ctrlr.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
