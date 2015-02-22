@@ -32,6 +32,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'https://github.com/briandoll/change-inside-surroundings.vim'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'goldfeld/ctrlr.vim'
+Plugin 'https://github.com/jszakmeister/vim-togglecursor'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

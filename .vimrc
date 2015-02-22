@@ -70,8 +70,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 noremap <special> <Esc> <Esc>hl
 
@@ -117,7 +117,21 @@ if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
   map <Esc>[24~ <F12>
 endif
 
+" Fix the arrow navigation... tempted to remove this since I dont really use
+" the arrows...
+nnoremap <Esc>A <up>
+nnoremap <Esc>B <down>
+nnoremap <Esc>C <right>
+nnoremap <Esc>D <left>
+inoremap <Esc>A <up>
+inoremap <Esc>B <down>
+inoremap <Esc>C <right>
+inoremap <Esc>D <left>
+
+
 nnoremap <F9> :Dispatch<CR>
+nnoremap <F8> :!cargo run<CR>
+nnoremap <F7> :!cargo test<CR>
 " RSpec.vim mappings
 let g:rspec_command = "Dispatch rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
@@ -141,6 +155,9 @@ map <c-l> :tabn<cr>
 
 " Turn on search highlight
 set hlsearch
+
+" Reset search
+nnoremap <F3> :noh<CR>
 
 
 " Highlight color in visual mode
