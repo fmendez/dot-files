@@ -102,9 +102,23 @@ so $HOME/ctrlp_custom.vim
 set background=dark
 colorscheme solarized
 
-" RSpec.vim mappings
-nnoremap ,rs :Dispatch<CR>
+if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
+  map <Esc>OP <F1>
+  map <Esc>OQ <F2>
+  map <Esc>OR <F3>
+  map <Esc>OS <F4>
+  map <Esc>[16~ <F5>
+  map <Esc>[17~ <F6>
+  map <Esc>[18~ <F7>
+  map <Esc>[19~ <F8>
+  map <Esc>[20~ <F9>
+  map <Esc>[21~ <F10>
+  map <Esc>[23~ <F11>
+  map <Esc>[24~ <F12>
+endif
 
+nnoremap <F9> :Dispatch<CR>
+" RSpec.vim mappings
 let g:rspec_command = "Dispatch rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
 map <Leader>cs :call RunCurrentSpecFile()<CR>
@@ -131,3 +145,7 @@ set hlsearch
 
 " Highlight color in visual mode
 hi Visual term=reverse cterm=reverse guibg=Grey
+
+" force file type detection with rust files due to some weird bug
+" https://github.com/rust-lang/rust.vim/issues/10
+au BufRead,BufNewFile *.rs set filetype=rust
