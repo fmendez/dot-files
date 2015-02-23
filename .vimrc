@@ -77,7 +77,7 @@ noremap <special> <Esc> <Esc>hl
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=100 ttimeoutlen=0
 
 
 set incsearch
@@ -115,6 +115,8 @@ if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
   map <Esc>[21~ <F10>
   map <Esc>[23~ <F11>
   map <Esc>[24~ <F12>
+  map <Esc>H <C-H>
+  map <Esc>L <C-L>
 endif
 
 " Fix the arrow navigation... tempted to remove this since I dont really use

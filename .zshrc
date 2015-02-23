@@ -16,3 +16,6 @@ export TMPDIR="/private/tmp"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+KEYTIMEOUT=1
+
