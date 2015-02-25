@@ -16,8 +16,6 @@ Plugin 'https://github.com/kien/ctrlp.vim'
 
 Plugin 'https://github.com/rking/ag.vim'
 
-Plugin 'https://github.com/christoomey/vim-tmux-navigator'
-
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'https://github.com/skwp/vim-colors-solarized'
 

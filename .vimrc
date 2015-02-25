@@ -77,13 +77,13 @@ noremap <special> <Esc> <Esc>hl
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
-set timeoutlen=100 ttimeoutlen=0
+set timeoutlen=300 ttimeoutlen=0
 
 
 set incsearch
 
 let g:mustache_abbreviations = 1
-map ,n :NERDTreeToggle<CR>
+nnoremap ,n :NERDTreeToggle<CR>
 "that will make is so html files are only checked if you explicitly run
 ":SyntasticCheck
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
@@ -95,7 +95,7 @@ set lazyredraw
 set ttyfast
 
 
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Solarized theme
 so $HOME/ctrlp_custom.vim
@@ -137,10 +137,10 @@ nnoremap <F7> :!cargo test<CR>
 " RSpec.vim mappings
 let g:rspec_command = "Dispatch rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
-map <Leader>cs :call RunCurrentSpecFile()<CR>
-map <Leader>ns :call RunNearestSpec()<CR>
-map <Leader>ls :call RunLastSpec()<CR>
-map <Leader>as :call RunAllSpecs()<CR>
+nnoremap <Leader>cs :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>ns :call RunNearestSpec()<CR>
+nnoremap <Leader>ls :call RunLastSpec()<CR>
+nnoremap <Leader>as :call RunAllSpecs()<CR>
 
 " Limits the symbols available for marks to be only the alphabet
 let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
@@ -152,8 +152,8 @@ set cpoptions+=$
 set clipboard=unnamed
 
 " Sane tab navigation
-map <c-h> :tabp<cr>
-map <c-l> :tabn<cr>
+nnoremap <c-h> :tabp<cr>
+nnoremap <c-l> :tabn<cr>
 
 " Turn on search highlight
 set hlsearch
