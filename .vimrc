@@ -77,7 +77,7 @@ noremap <special> <Esc> <Esc>hl
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
-set timeoutlen=300 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0
 
 
 set incsearch
@@ -132,8 +132,6 @@ inoremap <Esc>D <left>
 
 
 nnoremap <F9> :Dispatch<CR>
-nnoremap <F8> :!cargo run<CR>
-nnoremap <F7> :!cargo test<CR>
 " RSpec.vim mappings
 let g:rspec_command = "Dispatch rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
@@ -159,7 +157,7 @@ nnoremap <c-l> :tabn<cr>
 set hlsearch
 
 " Reset search
-nnoremap <F3> :noh<CR>
+nnoremap // :noh<CR>
 
 
 " Highlight color in visual mode
@@ -168,3 +166,8 @@ hi Visual term=reverse cterm=reverse guibg=Grey
 " force file type detection with rust files due to some weird bug
 " https://github.com/rust-lang/rust.vim/issues/10
 au BufRead,BufNewFile *.rs set filetype=rust
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
