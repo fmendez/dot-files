@@ -171,3 +171,20 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+
+
+" push current line up or down
+nnoremap <leader><Up> ddkP
+nnoremap <leader><Down> ddp
+
+" exchange character under cursor with the next character without moving the cursor
+nnoremap gc xph
+
+" exchange word under cursor with the next word without moving the cursor
+nnoremap gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
+
+" push word under cursor to the left
+nnoremap <leader><Left> "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
+
+" push word under cursor to the right
+nnoremap <leader><Right> "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>/\w\+\_W\+<CR><C-l>
