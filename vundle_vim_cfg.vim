@@ -1,3 +1,6 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -32,13 +35,11 @@ Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'goldfeld/ctrlr.vim'
 Plugin 'https://github.com/jszakmeister/vim-togglecursor'
 Plugin 'https://github.com/szw/vim-tags'
+Plugin 'https://github.com/sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'https://github.com/Shougo/neocomplete.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put youa non-Plugin stuff after this line
+
+filetype plugin indent on
