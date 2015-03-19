@@ -133,7 +133,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Solarized theme
 so $HOME/ctrlp_custom.vim
-set background=dark
+set background=light
 colorscheme solarized
 
 if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
