@@ -34,10 +34,12 @@ Plugin 'https://github.com/briandoll/change-inside-surroundings.vim'
 Plugin 'https://github.com/tomtom/tcomment_vim'
 Plugin 'goldfeld/ctrlr.vim'
 Plugin 'https://github.com/jszakmeister/vim-togglecursor'
-Plugin 'https://github.com/szw/vim-tags'
+" Plugin 'https://github.com/szw/vim-tags'
 Plugin 'https://github.com/sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'https://github.com/Shougo/neocomplete.vim'
+Plugin 'https://github.com/jwhitley/vim-matchit'
+Plugin 'https://github.com/ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

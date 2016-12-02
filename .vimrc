@@ -133,8 +133,8 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Solarized theme
 so $HOME/ctrlp_custom.vim
-set background=light
-colorscheme solarized
+set background=dark
+" colorscheme tango 
 
 if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
   map <Esc>OP <F1>
@@ -286,3 +286,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
