@@ -1,3 +1,5 @@
+" REMEMBER TO SELECT SOLARIZED DARK AS THE ITERMS THEME
+
 so $HOME/vundle_vim_cfg.vim
 
 " ================ General Config ====================
@@ -134,7 +136,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " Solarized theme
 so $HOME/ctrlp_custom.vim
 set background=dark
-" colorscheme tango 
+colorscheme solarized
 
 if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
   map <Esc>OP <F1>
@@ -290,3 +292,5 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+
+hi Search cterm=NONE ctermfg=white ctermbg=yellow
