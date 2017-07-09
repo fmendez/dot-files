@@ -35,18 +35,15 @@ alias gitup='git pull && gitlor && git submodule update'
 
 #alias git-set-remote='echo git config branch.`git-branch-name`.remote "$1" && echo git config branch.`git-branch-name`.merge "refs/heads/$2"'
 
-alias m='mvim .'
+# alias m='mvim .'
 alias r='rake'
-#alias vim='/usr/local/Cellar/vim/7.4.488/bin/vim'
-alias vim='/usr/local/Cellar/vim/8.0.0062/bin/vim'
-alias devbox='cd /Users/fmendez/Desktop/start/stella/devbox'
-alias oss='cd /Users/fmendez/Desktop/start/oss'
+alias vim='/usr/local/Cellar/vim/8.0.0698/bin/vim'
+alias oss='cd /Users/fmendez/Desktop/development/oss'
 
-alias rcompose='cd /Users/fmendez/Desktop/start/stella/rosi_compose/'
-alias esrv='cd /Users/fmendez/Desktop/start/stella/web/services/'
-alias elounge='cd /Users/fmendez/Desktop/start/stella/web/frontend/ever_lounge'
-alias fix_devbox= 'vboxmanage controlvm devbox_default_1426606313150_31688 keyboardputscancode 1c'
 alias dc='docker-compose -f docker-compose.dev.yml'
 alias dc-clean= 'docker rm $(docker ps -a -q)'
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+source $HOME/.private_alias
+
