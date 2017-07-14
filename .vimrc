@@ -97,7 +97,7 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 " Ignoring  certain types of files and build/target directories
-let NERDTreeIgnore=['target$[[dir]]']
+let NERDTreeIgnore=['^target$[[dir]]']
 "
 " ================ Scrolling ========================
 
