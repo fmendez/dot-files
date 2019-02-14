@@ -26,3 +26,7 @@ KEYTIMEOUT=1
 function rancher {
   (eval $(docker-machine env -u); command rancher $@)
 }
+
+# export RANCHER_CLIENT_CONFIG=~/.rancher/ssp.json
+alias "rancher-ssp"="rancher -c ~/.rancher/ssp.json"
+alias "rancher-ever"="rancher -c ~/.rancher/ever.json"

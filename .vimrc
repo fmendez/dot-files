@@ -19,6 +19,7 @@ set laststatus=2                "Always show status line
 set hidden
 
 "turn on syntax highlighting
+let python_highlight_all=1
 syntax on
 
 " Change leader to a comma because the backslash is too far away
@@ -122,7 +123,17 @@ let g:mustache_abbreviations = 1
 nnoremap ,n :NERDTreeToggle<CR>
 "that will make is so html files are only checked if you explicitly run
 ":SyntasticCheck
-let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_eslint_exe ='/Users/fmendez/Desktop/development/stelladot/web/frontend/keep_lounge/node_modules/.bin/eslint'
+let g:syntastic_javascript_checkers = ['eslint']
+
 
 " Allow Ctrp to search only on the currect directory
 "
@@ -294,3 +305,15 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 hi Search cterm=NONE ctermfg=white ctermbg=yellow
+
+" Python indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+map <c-f> :call JsBeautify()<cr>
