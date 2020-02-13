@@ -1,10 +1,53 @@
-" REMEMBER TO SELECT SOLARIZED DARK AS THE ITERMS THEME
+" ================= Plug Section START =================
 
-so $HOME/vundle_vim_cfg.vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
+Plug 'https://github.com/kien/ctrlp.vim'
+Plug 'https://github.com/rking/ag.vim'
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'justinmk/vim-sneak'
+Plug 'brooth/far.vim'
+
+Plug 'https://github.com/tomtom/tcomment_vim'
+Plug 'andymass/vim-matchup'
+Plug 'https://github.com/ntpeters/vim-better-whitespace'
+
+" Rust
+Plug 'https://github.com/rust-lang/rust.vim'
+
+" Python
+Plug 'vim-scripts/indentpython.vim'
+
+" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
+Plug 'nvie/vim-flake8'
+Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+Plug 'maksimr/vim-jsbeautify'
+
+call plug#end()
+
+" ================= Plug Section END =================
+
+
 
 " ================ General Config ====================
 
-set number                      "Line numbers are good
+
+set encoding=UTF-8
+" set number                      "Line numbers are good
+set relativenumber
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -12,6 +55,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set autoread                    "Reload files changed outside vim
 set laststatus=2                "Always show status line
+set mouse=a
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -21,6 +65,8 @@ set hidden
 "turn on syntax highlighting
 let python_highlight_all=1
 syntax on
+
+au FocusGained,BufEnter * :checktime
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -33,16 +79,9 @@ set cpoptions+=$
 " Make sure Vim use the system clipboard as the default register
 set clipboard=unnamed
 
-
-" Turn on search highlight
-set hlsearch
-
 " Reset search
 nnoremap <F3> :noh<CR>
 
-
-" Highlight color in visual mode
-hi Visual term=reverse cterm=reverse guibg=Grey
 
 " ================ Turn Off Swap Files ==============
 
@@ -83,9 +122,8 @@ set nofoldenable        "dont fold by default
 
 
 " ================ Completion =======================
-
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmenu
+set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
@@ -98,8 +136,8 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 " Ignoring  certain types of files and build/target directories
-let NERDTreeIgnore=['^target$[[dir]]']
-"
+let NERDTreeIgnore=['^target$[[dir]]', '^node_modules$']
+
 " ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
@@ -114,7 +152,7 @@ noremap <special> <Esc> <Esc>hl
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
-set timeoutlen=500 ttimeoutlen=0
+set timeoutlen=1000 ttimeoutlen=0
 
 
 set incsearch
@@ -124,68 +162,16 @@ nnoremap ,n :NERDTreeToggle<CR>
 "that will make is so html files are only checked if you explicitly run
 ":SyntasticCheck
 "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_eslint_exe ='/Users/fmendez/Desktop/development/stelladot/web/frontend/keep_lounge/node_modules/.bin/eslint'
-let g:syntastic_javascript_checkers = ['eslint']
-
-
-" Allow Ctrp to search only on the currect directory
-"
-nnoremap <silent> ,e :CtrlPCurWD<cr>
 set lazyredraw
 set ttyfast
 
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Solarized theme
-so $HOME/ctrlp_custom.vim
+nnoremap <silent> ,t :FZF<CR>
+nnoremap <silent> ,g :Rg<CR>
 set background=dark
-colorscheme solarized
-
-if has('mac') && ($TERM == 'xterm-256color' || $TERM == 'screen-256color')
-  map <Esc>OP <F1>
-  map <Esc>OQ <F2>
-  map <Esc>OR <F3>
-  map <Esc>OS <F4>
-  map <Esc>[16~ <F5>
-  map <Esc>[17~ <F6>
-  map <Esc>[18~ <F7>
-  map <Esc>[19~ <F8>
-  map <Esc>[20~ <F9>
-  map <Esc>[21~ <F10>
-  map <Esc>[23~ <F11>
-  map <Esc>[24~ <F12>
-  map <Esc>H <C-H>
-  map <Esc>L <C-L>
-endif
-
-" Fix the arrow navigation... tempted to remove this since I dont really use
-" the arrows...
-nnoremap <Esc>A <up>
-nnoremap <Esc>B <down>
-nnoremap <Esc>C <right>
-nnoremap <Esc>D <left>
-inoremap <Esc>A <up>
-inoremap <Esc>B <down>
-inoremap <Esc>C <right>
-inoremap <Esc>D <left>
-
-
-nnoremap <F9> :Dispatch<CR>
-" RSpec.vim mappings
-let g:rspec_command = "Dispatch rspec {spec}"
-let g:rspec_runner = "os_x_iterm"
-nnoremap <Leader>cs :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>ns :call RunNearestSpec()<CR>
-nnoremap <Leader>ls :call RunLastSpec()<CR>
-nnoremap <Leader>as :call RunAllSpecs()<CR>
+colorscheme gruvbox
 
 " Limits the symbols available for marks to be only the alphabet
 let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
@@ -202,13 +188,14 @@ nnoremap <c-l> :tabn<cr>
 
 " Turn on search highlight
 set hlsearch
+hi Search ctermbg=LightYellow ctermfg=Red
 
 " Reset search
 nnoremap // :noh<CR>
 
 
 " Highlight color in visual mode
-hi Visual term=reverse cterm=reverse guibg=Grey
+" hi Visual term=reverse cterm=reverse guibg=Grey
 
 " force file type detection with rust files due to some weird bug
 " https://github.com/rust-lang/rust.vim/issues/10
@@ -241,70 +228,9 @@ nnoremap <leader>rif  ddkP3Jd$
 
 nnoremap <leader>co :copen<CR>
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-" inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
-
-hi Search cterm=NONE ctermfg=white ctermbg=yellow
 
 " Python indentation
 au BufNewFile,BufRead *.py
@@ -316,4 +242,153 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-map <c-f> :call JsBeautify()<cr>
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-rls',
+  \ ]
+
+let g:rustfmt_autosave = 1
+let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'  " Python 3
+
+
+" ===== COC Config =====
+" if hidden is not set, TextEdit might fail.
+
+" Some servers have issues with backup files, see #649
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" " Manage extensions
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+
+"" add yaml stuffs
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab

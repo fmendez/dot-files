@@ -48,6 +48,7 @@ Plugin 'nvie/vim-flake8'
 
 Plugin 'groenewege/vim-less'
 Plugin 'posva/vim-vue'
+Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
 
 " All of your Plugins must be added before the following line

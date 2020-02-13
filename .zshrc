@@ -30,3 +30,12 @@ function rancher {
 # export RANCHER_CLIENT_CONFIG=~/.rancher/ssp.json
 alias "rancher-ssp"="rancher -c ~/.rancher/ssp.json"
 alias "rancher-ever"="rancher -c ~/.rancher/ever.json"
+
+# Alias neovim to vim
+# if type nvim > /dev/null 2>&1; then
+#   alias vim='nvim'
+# fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='fd --type f'

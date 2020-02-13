@@ -38,8 +38,8 @@ alias gitup='git pull && gitlor && git submodule update'
 # alias m='mvim .'
 alias r='rake'
 # alias vim='/usr/local/Cellar/vim/8.0.0698/bin/vim'
-alias vim='/usr/local/Cellar/vim/8.0.1400_4/bin/vim'
-alias oss='cd /Users/fmendez/Desktop/development/oss'
+# alias vim='/usr/local/Cellar/vim/8.0.1400_4/bin/vim'
+alias vim='nvim'
 
 alias dc-clean-all= 'docker rm $(docker ps -a -q)'
 alias dc-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -47,5 +47,5 @@ alias dc-clean-ps='docker rm $(docker ps --filter=status=exited --filter=status=
 alias dc-eval='eval $(docker-machine env default)'
 # alias python='/usr/local/bin/python3'
 
+alias oss='cd /Users/fmendez/Desktop/development/oss/'
 source $HOME/.private_alias
-
