@@ -39,3 +39,5 @@ alias "rancher-ever"="rancher -c ~/.rancher/ever.json"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND='fd --type f'
+export PGDATA='/usr/local/var/postgres'
+source $HOME/.zprofile
