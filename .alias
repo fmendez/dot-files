@@ -48,4 +48,4 @@ alias dc-eval='eval $(docker-machine env default)'
 alias python='/usr/local/bin/python3'
 
 alias oss='cd /Users/fmendez/Desktop/development/oss/'
-source $HOME/.private_alias
+# source $HOME/.private_alias
